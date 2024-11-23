@@ -1,0 +1,9 @@
+Flask
+Flask-JWT-Extended
+Flask-Cors
+sqlite3
+streamlit
+langchain
+openai
+faiss-cpu
+python-dotenv
