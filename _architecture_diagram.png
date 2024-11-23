@@ -1,0 +1,8 @@
+digraph {
+	"My System" [shape=box]
+	Frontend [shape=ellipse]
+	Backend [shape=ellipse]
+	Database [shape=ellipse]
+	Frontend -> Backend
+	Backend -> Database
+}
