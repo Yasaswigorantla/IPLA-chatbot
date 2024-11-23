@@ -6,7 +6,7 @@ import sqlite3
 import streamlit as st
 import subprocess
 import pandas as pd
-import plotly.express as px
+
 
 # Add gradient background or image with overlay
 def add_bg():
