@@ -1,9 +1,10 @@
-Flask
-Flask-JWT-Extended
-Flask-Cors
-sqlite3
 streamlit
 openai
+pandas
+requests
+numpy
+pypdf2
 langchain
 faiss-cpu
-python-dotenv
+python-docx
+textract
