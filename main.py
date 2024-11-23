@@ -279,36 +279,36 @@ def user_profile(username):
             st.write(f"{stat.capitalize()}: {value}")
 
 
-def add_new_user(username):
-    if username not in users_db:
-        users_db[username] = {'activity_count': 0}
-def record_activity(username):
-    if username in users_db:
-        users_db[username]['activity_count'] += 1  # Increment activity count
-        st.write(f"Recorded activity for {username}. New activity_count: {users_db[username]['activity_count']}")
-    else:
-        # If user doesn't exist, create them with initial activity count
-        users_db[username] = {'activity_count': 1}
-        st.write(f"User '{username}' not found in database. Added with activity_count set to 1.")
+# def add_new_user(username):
+#     if username not in users_db:
+#         users_db[username] = {'activity_count': 0}
+# def record_activity(username):
+#     if username in users_db:
+#         users_db[username]['activity_count'] += 1  # Increment activity count
+#         st.write(f"Recorded activity for {username}. New activity_count: {users_db[username]['activity_count']}")
+#     else:
+#         # If user doesn't exist, create them with initial activity count
+#         users_db[username] = {'activity_count': 1}
+#         st.write(f"User '{username}' not found in database. Added with activity_count set to 1.")
 
-# Dashboard with Plotly visualizations
-def student_dashboard(username):
-    st.title(f"Dashboard for {username}")
-    if username in users_db:
-        activity_counts = users_db[username].get('activity_count', 0)
-        st.write(f"Activity Count for {username}: {activity_counts}")
-    else:
-        st.error(f"User '{username}' not found in the database.")
-    activity_counts = users_db[username]['activity_count']
-    data = {
-        'Activity': ['Chat Sessions', 'PDFs Processed', 'URLs Explored'],
-        'Count': [activity_counts['chat_sessions'], activity_counts['pdf_processed'], activity_counts['urls_explored']]
-    }
-    df = pd.DataFrame(data)
-    fig = px.bar(df, x='Activity', y='Count', color='Activity',
-                 title="User Activity Summary",
-                 labels={'Count':'Activity Count'}, height=400)
-    st.plotly_chart(fig)
+# # Dashboard with Plotly visualizations
+# def student_dashboard(username):
+#     st.title(f"Dashboard for {username}")
+#     if username in users_db:
+#         activity_counts = users_db[username].get('activity_count', 0)
+#         st.write(f"Activity Count for {username}: {activity_counts}")
+#     else:
+#         st.error(f"User '{username}' not found in the database.")
+#     activity_counts = users_db[username]['activity_count']
+#     data = {
+#         'Activity': ['Chat Sessions', 'PDFs Processed', 'URLs Explored'],
+#         'Count': [activity_counts['chat_sessions'], activity_counts['pdf_processed'], activity_counts['urls_explored']]
+#     }
+#     df = pd.DataFrame(data)
+#     fig = px.bar(df, x='Activity', y='Count', color='Activity',
+#                  title="User Activity Summary",
+#                  labels={'Count':'Activity Count'}, height=400)
+#     st.plotly_chart(fig)
 
 # Main tool interface
 def main_tool_interface():
@@ -319,7 +319,7 @@ def main_tool_interface():
         st.markdown('<div class="card"><p class="chat">🤖 CHATIFY</p>', unsafe_allow_html=True)
         if st.button("Chat Bot", help="Chat with our AI Chatbot", use_container_width=True):
             subprocess.run(["streamlit", "run", "C:/Users/yasas/OneDrive/Desktop/ai tool/AI-TOOL/chat.py"])
-            users_db[st.session_state.username]["activity_count"]["chat_sessions"] += 1
+            # users_db[st.session_state.username]["activity_count"]["chat_sessions"] += 1
             save_users_db()
             st.success("Chat session recorded!")
         st.markdown('<p class="c1">Chat with AI Bot to ask questions.</p>', unsafe_allow_html=True)
@@ -328,7 +328,7 @@ def main_tool_interface():
         st.markdown('<div class="card"><p class="chat">🕸️ WEBIFY</p>', unsafe_allow_html=True)
         if st.button("URL Explorer", help="Explore URLs", use_container_width=True):
             subprocess.run(["streamlit", "run", "C:/Users/yasas/OneDrive/Desktop/ai tool/AI-TOOL/URL.py"])
-            users_db[st.session_state.username]["activity_count"]["urls_explored"] += 1
+            # users_db[st.session_state.username]["activity_count"]["urls_explored"] += 1
             save_users_db()
             st.success("URL exploration recorded!")
         st.markdown('<p class="c1">Explore and analyze URLs.</p>', unsafe_allow_html=True)
@@ -337,7 +337,7 @@ def main_tool_interface():
         st.markdown('<div class="card"><p class="chat">📄 DOCIFY</p>', unsafe_allow_html=True)
         if st.button("PDF Uploader", help="Upload PDFs", use_container_width=True):
             subprocess.run(["streamlit", "run", "C:/Users/yasas/OneDrive/Desktop/ai tool/AI-TOOL/pdf.py"])
-            users_db[st.session_state.username]["activity_count"]["pdf_processed"] += 1
+            # users_db[st.session_state.username]["activity_count"]["pdf_processed"] += 1
             save_users_db()
             st.success("PDF processed recorded!")
         st.markdown('<p class="c1">Upload and process PDF files.</p>', unsafe_allow_html=True)
