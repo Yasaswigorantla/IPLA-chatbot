@@ -6,6 +6,9 @@ import sqlite3
 import streamlit as st
 import subprocess
 import pandas as pd
+import chat
+import url
+import pdf
 
 # Add gradient background or image with overlay
 def add_bg():
@@ -317,7 +320,7 @@ def main_tool_interface():
     with col1:
         st.markdown('<div class="card"><p class="chat">🤖 CHATIFY</p>', unsafe_allow_html=True)
         if st.button("Chat Bot", help="Chat with our AI Chatbot", use_container_width=True):
-            subprocess.run(["streamlit", "run", "C:/Users/yasas/OneDrive/Desktop/ai tool/AI-TOOL/chat.py"])
+            subprocess.run(["streamlit", "run", "chat.py"])
             # users_db[st.session_state.username]["activity_count"]["chat_sessions"] += 1
             save_users_db()
             st.success("Chat session recorded!")
@@ -326,7 +329,7 @@ def main_tool_interface():
     with col2:
         st.markdown('<div class="card"><p class="chat">🕸️ WEBIFY</p>', unsafe_allow_html=True)
         if st.button("URL Explorer", help="Explore URLs", use_container_width=True):
-            subprocess.run(["streamlit", "run", "C:/Users/yasas/OneDrive/Desktop/ai tool/AI-TOOL/URL.py"])
+            subprocess.run(["streamlit", "run", "URL.py"])
             # users_db[st.session_state.username]["activity_count"]["urls_explored"] += 1
             save_users_db()
             st.success("URL exploration recorded!")
@@ -335,7 +338,7 @@ def main_tool_interface():
     with col3:
         st.markdown('<div class="card"><p class="chat">📄 DOCIFY</p>', unsafe_allow_html=True)
         if st.button("PDF Uploader", help="Upload PDFs", use_container_width=True):
-            subprocess.run(["streamlit", "run", "C:/Users/yasas/OneDrive/Desktop/ai tool/AI-TOOL/pdf.py"])
+            subprocess.run(["streamlit", "run", "pdf.py"])
             # users_db[st.session_state.username]["activity_count"]["pdf_processed"] += 1
             save_users_db()
             st.success("PDF processed recorded!")
