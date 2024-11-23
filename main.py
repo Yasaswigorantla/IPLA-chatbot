@@ -7,7 +7,6 @@ import streamlit as st
 import subprocess
 import pandas as pd
 
-
 # Add gradient background or image with overlay
 def add_bg():
     st.markdown(
@@ -213,70 +212,70 @@ def custom_navbar():
 
 #     st.markdown('</div>', unsafe_allow_html=True)  # Close login-card
 
-def user_profile(username):
-    st.title(f"Welcome, {username}!")
-    st.subheader("User Profile")
-    tabs = st.tabs(["Profile", "Uploaded Files", "Stats"])
+# def user_profile(username):
+#     st.title(f"Welcome, {username}!")
+#     st.subheader("User Profile")
+#     tabs = st.tabs(["Profile", "Uploaded Files", "Stats"])
 
-    if username not in users_db:
-        st.error("User not found.")
-        return
+#     if username not in users_db:
+#         st.error("User not found.")
+#         return
 
-    user_data = users_db[username]
-    if "uploaded_files" not in user_data:
-        user_data["uploaded_files"] = []
+#     user_data = users_db[username]
+#     if "uploaded_files" not in user_data:
+#         user_data["uploaded_files"] = []
 
-    # Profile Tab
-    with tabs[0]:
-        st.write("Profile Details")
-        email = user_data.get('email', "Email not set")
-        contact = user_data.get('contact', "Contact not set")
+#     # Profile Tab
+#     with tabs[0]:
+#         st.write("Profile Details")
+#         email = user_data.get('email', "Email not set")
+#         contact = user_data.get('contact', "Contact not set")
 
-        email_input = st.text_input("Email", value=email)
-        contact_input = st.text_input("Contact", value=contact)
+#         email_input = st.text_input("Email", value=email)
+#         contact_input = st.text_input("Contact", value=contact)
 
-        if st.button("Save Changes"):
-            if email_input != email or contact_input != contact:
-                user_data['email'] = email_input
-                user_data['contact'] = contact_input
-                users_db[username] = user_data
-                save_users_db()
-                st.success("Profile updated successfully!")
-            else:
-                st.info("No changes detected.")
+#         if st.button("Save Changes"):
+#             if email_input != email or contact_input != contact:
+#                 user_data['email'] = email_input
+#                 user_data['contact'] = contact_input
+#                 users_db[username] = user_data
+#                 save_users_db()
+#                 st.success("Profile updated successfully!")
+#             else:
+#                 st.info("No changes detected.")
 
-    # Uploaded Files Tab
-    with tabs[1]:
-        st.write("Uploaded Files")
+#     # Uploaded Files Tab
+#     with tabs[1]:
+#         st.write("Uploaded Files")
 
-        uploaded_file = st.file_uploader("Upload a file")
+#         uploaded_file = st.file_uploader("Upload a file")
         
-        if uploaded_file:
-            file_data = {
-                "name": uploaded_file.name,
-                "type": uploaded_file.type,
-                "content": encode_file_content(uploaded_file.read())  # Encode to base64
-            }
+#         if uploaded_file:
+#             file_data = {
+#                 "name": uploaded_file.name,
+#                 "type": uploaded_file.type,
+#                 "content": encode_file_content(uploaded_file.read())  # Encode to base64
+#             }
             
-            user_data["uploaded_files"].append(file_data)
-            users_db[username] = user_data
-            save_users_db()
+#             user_data["uploaded_files"].append(file_data)
+#             users_db[username] = user_data
+#             save_users_db()
 
-            st.success("File uploaded successfully!")
+#             st.success("File uploaded successfully!")
 
-        if user_data["uploaded_files"]:
-            for i, file in enumerate(user_data["uploaded_files"], 1):
-                st.write(f"File {i}: {file['name']} ({file['type']}) - Preview: {file['content'][:50]}...")
+#         if user_data["uploaded_files"]:
+#             for i, file in enumerate(user_data["uploaded_files"], 1):
+#                 st.write(f"File {i}: {file['name']} ({file['type']}) - Preview: {file['content'][:50]}...")
 
-    # Stats Tab
-    with tabs[2]:
-        st.write("User Stats")
-        activity_count = user_data.get("activity_count", 0)
-        st.write(f"Activity Count: {activity_count}")
+#     # Stats Tab
+#     with tabs[2]:
+#         st.write("User Stats")
+#         activity_count = user_data.get("activity_count", 0)
+#         st.write(f"Activity Count: {activity_count}")
 
-        stats = user_data.get("stats", {})
-        for stat, value in stats.items():
-            st.write(f"{stat.capitalize()}: {value}")
+#         stats = user_data.get("stats", {})
+#         for stat, value in stats.items():
+#             st.write(f"{stat.capitalize()}: {value}")
 
 
 # def add_new_user(username):
@@ -291,7 +290,7 @@ def user_profile(username):
 #         users_db[username] = {'activity_count': 1}
 #         st.write(f"User '{username}' not found in database. Added with activity_count set to 1.")
 
-# # Dashboard with Plotly visualizations
+# Dashboard with Plotly visualizations
 # def student_dashboard(username):
 #     st.title(f"Dashboard for {username}")
 #     if username in users_db:
@@ -356,12 +355,12 @@ def main():
         
         if page == "Home":
             main_tool_interface()
-        elif page == "Profile":
-            user_profile(st.session_state.username)
-        elif page == "Dashboard":
-            username = st.session_state.username
-            add_new_user(username)
-            student_dashboard(username)
+        # elif page == "Profile":
+        #     # user_profile(st.session_state.username)
+        # elif page == "Dashboard":
+        #     username = st.session_state.username
+            # add_new_user(username)
+            # student_dashboard(username)
         # elif page == "Log Out":
         #     st.session_state.logged_in = False
         #     st.success("You have logged out.")
