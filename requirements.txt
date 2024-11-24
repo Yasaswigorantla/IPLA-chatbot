@@ -4,8 +4,9 @@ pandas
 requests
 numpy
 pypdf2
-langchain>=0.0.196
-langchain_community
+langchain>=0.2.0
+langchain-community
+langchain-openai
 faiss-cpu
 speechrecognition
 python-dotenv
