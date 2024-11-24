@@ -4,7 +4,7 @@ pandas
 requests
 numpy
 pypdf2
-langchain
+langchain>=0.0.196
 faiss-cpu
 speechrecognition
 python-dotenv
