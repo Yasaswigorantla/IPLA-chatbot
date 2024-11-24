@@ -7,7 +7,7 @@ import streamlit as st
 import subprocess
 import pandas as pd
 import chat
-import url
+import URL
 import pdf
 
 # Add gradient background or image with overlay
