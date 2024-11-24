@@ -6,5 +6,4 @@ numpy
 pypdf2
 langchain
 faiss-cpu
-python-docx
-textract
+
