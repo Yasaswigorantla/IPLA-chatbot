@@ -11,7 +11,6 @@ from langchain_community.vectorstores import FAISS
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env
-llm = OpenAI(OPENAI_API_KEY="OPENAI_API_KEY")
 st.title("URL FETCHER")
 st.sidebar.title("Study Article URLs")
 
