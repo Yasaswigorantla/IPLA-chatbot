@@ -8,3 +8,4 @@ langchain
 faiss-cpu
 speechrecognition
 python-dotenv
+pydantic<2.0
